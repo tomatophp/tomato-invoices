@@ -1,3 +1,5 @@
+![Screenshot](https://github.com/tomatophp/tomato-invoices/blob/master/art/screenshot.png)
+
 # Tomato invoices
 
 Invoices Generator and Management for Tomato PHP
