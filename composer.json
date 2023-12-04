@@ -1,0 +1,49 @@
+{
+    "name": "tomatophp/tomato-invoices",
+    "type": "library",
+    "description": "Invoices Generator and Management for Tomato PHP",
+    "keywords": [
+        "php",
+        "laravel",
+        "invoices",
+        "tomatophp",
+        "e-commerce",
+        "erp",
+        "crm",
+        "tomato-crm",
+        "payments",
+        "wallet"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TomatoPHP\\TomatoInvoices\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TomatoPHP\\TomatoInvoices\\TomatoInvoicesServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Fady Mondy",
+            "email": "info@3x1.io"
+        }
+    ],
+    "require": {
+        "php": "^8.1|^8.2",
+        "tomatophp/console-helpers": "^1.1",
+        "tomatophp/tomato-orders": "^1.0",
+        "tomatophp/tomato-category": "^1.1",
+        "tomatophp/tomato-crm": "^1.1",
+        "tomatophp/tomato-products": "^1.0"
+    }
+}
