@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use ProtoneMedia\Splade\AbstractTable;
 use ProtoneMedia\Splade\Facades\Toast;
 use ProtoneMedia\Splade\SpladeTable;
+use TomatoPHP\TomatoRoles\Services\TomatoRoles;
 
 class InvoiceTable extends AbstractTable
 {
@@ -53,12 +54,6 @@ class InvoiceTable extends AbstractTable
             ->withGlobalSearch(
                 label: trans('tomato-admin::global.search'),
                 columns: ['id','uuid','name','phone',]
-            )
-            ->bulkAction(
-                label: trans('tomato-admin::global.crud.delete'),
-                each: fn (\TomatoPHP\TomatoInvoices\Models\Invoice $model) => $model->delete(),
-                after: fn () => Toast::danger(__('Invoice Has Been Deleted'))->autoDismiss(2),
-                confirm: true
             )
             ->defaultSort('id', 'desc')
             ->column(key: 'actions',label: trans('tomato-admin::global.crud.actions'))
@@ -118,7 +113,31 @@ class InvoiceTable extends AbstractTable
                 label: __('Is activated'),
                 sortable: true
             )
-            ->export()
             ->paginate(10);
+
+
+
+        if(auth('web')->user() && class_exists(TomatoRoles::class)){
+            if(auth('web')->user()->can('admin.invoices.export')){
+                $table->export();
+            }
+            if(auth('web')->user()->can('admin.invoices.destroy')){
+                $table->bulkAction(
+                    label: trans('tomato-admin::global.crud.delete'),
+                    each: fn (\TomatoPHP\TomatoInvoices\Models\Invoice $model) => $model->delete(),
+                    after: fn () => Toast::danger(__('Invoice Has Been Deleted'))->autoDismiss(2),
+                    confirm: true
+                );
+            }
+        }
+        else {
+            $table->bulkAction(
+                label: trans('tomato-admin::global.crud.delete'),
+                each: fn (\TomatoPHP\TomatoInvoices\Models\Invoice $model) => $model->delete(),
+                after: fn () => Toast::danger(__('Invoice Has Been Deleted'))->autoDismiss(2),
+                confirm: true
+            );
+            $table->export();
+        }
     }
 }
