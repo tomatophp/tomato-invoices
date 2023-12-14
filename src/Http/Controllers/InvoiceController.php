@@ -392,4 +392,23 @@ class InvoiceController extends Controller
             ]);
         }
     }
+
+    public function product(Request $request){
+        $request->validate([
+            "search" => "required|max:255|string",
+        ]);
+
+        $q = $request->get('search');
+
+        $account = Product::where(function ($query) use ($q) {
+            $query->whereJsonContains('name', $q)
+                ->orWhere('sku', 'like', "%$q%")
+                ->orWhere('barcode', 'like', "%$q%");
+        })->with('productMetas', function ($q){
+            $q->where('key', 'options')->first();
+        })->get();
+        if($account){
+            return response()->json($account);
+        }
+    }
 }

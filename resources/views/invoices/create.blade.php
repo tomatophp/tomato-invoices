@@ -206,7 +206,7 @@
                                             items.main[key].tax = items.main[key].item?.vat;
                                             items.updateTotal(key)
                                         "
-                                        :remote-url="route('admin.orders.product')"
+                                        :remote-url="route('admin.invoices.products')"
                                         option-label="name?.{{app()->getLocale()}}"
                                         remote-root="data"
                                         v-model="items.main[key].item"

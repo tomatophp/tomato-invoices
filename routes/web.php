@@ -6,6 +6,7 @@ use TomatoPHP\TomatoInvoices\Http\Controllers\InvoiceController;
 
 Route::middleware(['web','auth', 'splade', 'verified'])->name('admin.')->group(function () {
     Route::get('admin/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+    Route::get('admin/invoices/products', [InvoiceController::class, 'products'])->name('invoices.products');
     Route::get('admin/invoices/branches', [InvoiceController::class, 'branches'])->name('invoices.branches');
     Route::post('admin/invoices/company', [InvoiceController::class, 'company'])->name('invoices.company');
     Route::post('admin/invoices/accounts', [InvoiceController::class, 'accounts'])->name('invoices.accounts');
