@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use TomatoPHP\TomatoCrm\Models\Account;
 use TomatoPHP\TomatoOrders\Models\Order;
 use TomatoPHP\TomatoCategory\Models\Category;
-use TomatoPHP\TomatoOrders\Models\Branch;
+use TomatoPHP\TomatoBranches\Models\Branch;
 
 /**
  * @property integer $id
