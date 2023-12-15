@@ -8,8 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use TomatoPHP\TomatoAdmin\Facade\Tomato;
-use TomatoPHP\TomatoOrders\Models\Branch;
-use TomatoPHP\TomatoOrders\Models\Company;
+use TomatoPHP\TomatoBranches\Models\Branch;
+use TomatoPHP\TomatoBranches\Models\Company;
 use TomatoPHP\TomatoProducts\Models\Product;
 
 class InvoiceController extends Controller
