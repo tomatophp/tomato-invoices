@@ -14,6 +14,7 @@ Route::middleware(['web','auth', 'splade', 'verified'])->name('admin.')->group(f
     Route::get('admin/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
     Route::post('admin/invoices', [InvoiceController::class, 'store'])->name('invoices.store');
     Route::get('admin/invoices/{model}', [InvoiceController::class, 'show'])->name('invoices.show');
+    Route::get('admin/invoices/{model}/print', [InvoiceController::class, 'printIt'])->name('invoices.print');
     Route::get('admin/invoices/{model}/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
     Route::post('admin/invoices/{model}', [InvoiceController::class, 'update'])->name('invoices.update');
     Route::delete('admin/invoices/{model}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
