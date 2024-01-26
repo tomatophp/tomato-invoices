@@ -185,6 +185,20 @@ class InvoiceController extends Controller
 
     /**
      * @param \TomatoPHP\TomatoInvoices\Models\Invoice $model
+     * @return View|JsonResponse
+     */
+    public function printIt(\TomatoPHP\TomatoInvoices\Models\Invoice $model): View|JsonResponse
+    {
+        $model->from_id = $model->from_type::find($model->from_id);
+        $model->for_id = $model->for_type::find($model->for_id);
+        return Tomato::get(
+            model: $model,
+            view: 'tomato-invoices::invoices.print',
+        );
+    }
+
+    /**
+     * @param \TomatoPHP\TomatoInvoices\Models\Invoice $model
      * @return View
      */
     public function edit(\TomatoPHP\TomatoInvoices\Models\Invoice $model): View

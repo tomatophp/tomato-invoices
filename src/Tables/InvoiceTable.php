@@ -56,7 +56,6 @@ class InvoiceTable extends AbstractTable
                 columns: ['id','uuid','name','phone',]
             )
             ->defaultSort('id', 'desc')
-            ->column(key: 'actions',label: trans('tomato-admin::global.crud.actions'))
             ->column(
                 key: 'id',
                 label: __('Id'),
@@ -113,6 +112,7 @@ class InvoiceTable extends AbstractTable
                 label: __('Is activated'),
                 sortable: true
             )
+            ->column(key: 'actions',label: trans('tomato-admin::global.crud.actions'))
             ->paginate(10);
 
 

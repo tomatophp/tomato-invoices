@@ -120,6 +120,23 @@
                 </div>
                 <div class="flex justify-between gap-4">
                     <div class="flex flex-col justify-center items-center">
+                        {{__('Currency')}}
+                    </div>
+                    <div>
+                        <x-splade-select
+                            choices
+                            remote-root="data"
+                            :remote-url="route('admin.currencies.api')"
+                            type="number"
+                            name="currency_id"
+                            placeholder="{{__('Select Currency')}}"
+                            option-label="name"
+                            option-value="id"
+                        />
+                    </div>
+                </div>
+                <div class="flex justify-between gap-4">
+                    <div class="flex flex-col justify-center items-center">
                         {{__('Type')}}
                     </div>
                     <div>
@@ -146,7 +163,88 @@
                         <x-splade-checkbox name="send_email"/>
                     </div>
                 </div>
-
+                <div class="flex justify-between gap-4">
+                    <div class="flex flex-col justify-center items-center">
+                        {{__('Has Bank Transfer?')}}
+                    </div>
+                    <div>
+                        <x-splade-checkbox name="is_bank_transfer"/>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4" v-if="form.is_bank_transfer">
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank Account')}}
+                        </div>
+                        <div>
+                            <x-splade-input  name="bank_account" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank Account IBAN')}}
+                        </div>
+                        <div>
+                            <x-splade-input  name="bank_iban" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank Account Owner')}}
+                        </div>
+                        <div>
+                            <x-splade-input name="bank_account_owner" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank SWIFT')}}
+                        </div>
+                        <div>
+                            <x-splade-input  name="bank_swift" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank Address')}}
+                        </div>
+                        <div>
+                            <x-splade-input name="bank_address"  />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank Branch Code')}}
+                        </div>
+                        <div>
+                            <x-splade-input  name="bank_branch"  />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank Name')}}
+                        </div>
+                        <div>
+                            <x-splade-input name="bank_name"  />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank City')}}
+                        </div>
+                        <div>
+                            <x-splade-input name="bank_city"  />
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <div class="flex flex-col justify-center items-center">
+                            {{__('Bank Country')}}
+                        </div>
+                        <div>
+                            <x-splade-input name="bank_country"  />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div>
